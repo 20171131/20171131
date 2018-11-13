@@ -22,7 +22,7 @@ private:
 	bool m_bRunning;
 
 	int m_currentFrame;
-	TextureManager m_textureManager;
+	//TextureManager m_textureManager;
 
 	//SDL_Texture* m_pTexture; // the new SDL_Texture variable
 	//SDL_Rect m_sourceRectangle; // 원본 사각형 
