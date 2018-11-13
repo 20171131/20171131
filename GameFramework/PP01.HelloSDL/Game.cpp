@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Enemy.h"
 #include "TextureManager.h"
 #include <SDL_image.h>
 #include <iostream>
@@ -18,12 +19,23 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_bRunning = true;
 
 		// load 부분 대치   
-		if (!TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer))
+		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
 		{
 			return false;
 		}
-		m_go.load(100, 100, 128, 82, "animate");
-		m_player.load(300, 300, 128, 82, "animate");
+
+		m_go = new GameObject();
+		m_player = new Player();
+		m_enemy = new Enemy();
+
+		m_go->load(100, 100, 128, 82, "animate");
+		m_player->load(300, 300, 128, 82, "animate");
+		m_enemy->load(0, 0, 128, 82, "animate");
+
+		m_gameObject.push_back(m_go);
+		m_gameObject.push_back(m_player);
+		m_gameObject.push_back(m_enemy);
+
 	}
 	else {
 		return false; // sdl could not initialize
@@ -34,9 +46,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render()
 {
-	SDL_RenderClear(m_pRenderer); // draw colour로 지움
-	m_go.draw(m_pRenderer);
-	m_player.draw(m_pRenderer);
+	SDL_RenderClear(m_pRenderer); // clear to the draw colour
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObject.size(); i++)
+	{
+		m_gameObject[i]->draw(m_pRenderer);
+	}
 	SDL_RenderPresent(m_pRenderer); // draw to the screen
 }
 
@@ -66,6 +80,8 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	m_go.update();
-	m_player.update();
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObject.size(); i++)
+	{
+		m_gameObject[i]->update();
+	}
 }

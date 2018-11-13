@@ -2,14 +2,14 @@
 #include "SDL.h"
 #include "GameObject.h"
 #include "Player.h"
+#include <vector>
 
 class Game
 {
 public:
 	Game() {}
 	~Game() {}
-	bool init(const char* title, int xpos, int ypos,
-		int width, int height, bool fullscreen);
+	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();
 	void handleEvents();
@@ -23,7 +23,9 @@ private:
 
 	int m_currentFrame;
 
-	GameObject m_go;
-	Player m_player;
+	std::vector<GameObject*>m_gameObject;
 
+	GameObject* m_go;
+	GameObject* m_player;
+	GameObject* m_enemy;
 };
