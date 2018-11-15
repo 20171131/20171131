@@ -43,4 +43,7 @@ void Player::handleInput()
 	{
 		m_velocity.setY(2);
 	}
+
+	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
+	m_velocity = (*vec - m_position) / 100;
 }
