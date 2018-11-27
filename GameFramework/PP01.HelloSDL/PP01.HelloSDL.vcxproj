@@ -23,7 +23,7 @@
     <ProjectGuid>{2A767835-EA7E-4232-85EF-C4C5E8C1602A}</ProjectGuid>
     <RootNamespace>PP01HelloSDL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>PP16.MenuState</ProjectName>
+    <ProjectName>PP17.PlayState</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
