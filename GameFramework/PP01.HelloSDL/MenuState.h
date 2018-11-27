@@ -3,9 +3,15 @@
 
 class MenuState : public GameState
 {
+protected:
+	std::vector<GameObject*> m_gameObjects;
+
 private:
 	static const std::string s_menuID;
 	static MenuState* s_pInstance;
+
+	static void s_menuToPlay();
+	static void s_exitFromMenu();
 
 public:
 	virtual void update();
@@ -23,6 +29,4 @@ public:
 		}
 		return s_pInstance;
 	}
-
-
 };

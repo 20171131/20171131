@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "GameStateMachine.h"
-
 #include <vector>
 
 class Game
@@ -12,6 +11,7 @@ class Game
 private:
 	Game() {};
 	static Game* s_pInstance;
+	
 
 public:
 	~Game() {}
@@ -22,6 +22,7 @@ public:
 	void clean();
 	bool running() { return m_bRunning; }
 	void quit() { m_bRunning = false; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
