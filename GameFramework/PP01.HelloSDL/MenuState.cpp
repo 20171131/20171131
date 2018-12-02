@@ -3,7 +3,6 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "PlayState.h"
-
 #include <iostream>
 
 const std::string MenuState::s_menuID = "MENU";
