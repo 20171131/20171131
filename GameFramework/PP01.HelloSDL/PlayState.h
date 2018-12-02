@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "SDLGameObject.h"
 
 class GameObject;
 
@@ -21,6 +22,8 @@ public:
 		}
 		return s_pInstance;
 	}
+
+	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 
 private:
 	static const std::string s_playID;
