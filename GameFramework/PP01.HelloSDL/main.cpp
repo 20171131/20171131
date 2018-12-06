@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 	Uint32 frameStart, frameTime;
 
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("미니게임", 100, 100, 640, 480, false))
+	if (TheGame::Instance()->init("Mini Game", 100, 100, 1280, 720, false))
 	{
 		std::cout << "game init success!\n";
 

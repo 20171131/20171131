@@ -17,7 +17,7 @@ void PlayState::update()
 		m_gameObjects[i]->update();
 	}
 
-	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
+	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[2])))
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
@@ -38,17 +38,23 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
-	if (!TheTextureManager::Instance()->load("assets/helicopter.png", "helicopter", TheGame::Instance()->getRenderer())) 
+	if (!TheTextureManager::Instance()->load("assets/astronaut.png", "astronaut", TheGame::Instance()->getRenderer())) 
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("assets/helicopter2.png", "helicopter2", TheGame::Instance()->getRenderer())) 
+	if (!TheTextureManager::Instance()->load("assets/pluto.png", "pluto", TheGame::Instance()->getRenderer())) 
 	{
 		return false;
 	}
-	GameObject* player = new Player(new LoaderParams(500, 100, 128, 55, "helicopter"));
-	GameObject* enemy = new Enemy(new LoaderParams(100, 100, 128, 55, "helicopter2"));
+	if (!TheTextureManager::Instance()->load("assets/background.png", "background", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	GameObject* player = new Player(new LoaderParams(500, 100, 105, 130, "astronaut"));
+	GameObject* enemy = new Enemy(new LoaderParams(-5, 100, 100, 100, "pluto"));
+	GameObject* SDLgameobject = new SDLGameObject(new LoaderParams(0, 0, 1280, 720, "background"));
 
+	m_gameObjects.push_back(SDLgameobject);
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
 

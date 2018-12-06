@@ -11,5 +11,5 @@ public:
 	virtual void clean();
 
 private:
-	int m_numFrames = 5;
+	int m_numFrames = 1;
 };
