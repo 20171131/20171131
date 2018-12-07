@@ -7,6 +7,7 @@
 #include "GameOverState.h"
 #include "SDLGameObject.h"
 #include <iostream>
+#include <cstdlib>
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -21,11 +22,19 @@ void PlayState::update()
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
+	else if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[3])))
+	{
+		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+	}
 
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new PauseState());
 	}
+
+	now = clock();
+	clock_t frameTime = now - start;
+	std::cout << "frameTime : " << (frameTime / 1000.0f) << " sec" << std::endl;
 }
 
 void PlayState::render()
@@ -50,15 +59,24 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+
+	srand((unsigned int)time(0));
+	int v_random = rand() % 600 + 1;
+
 	GameObject* player = new Player(new LoaderParams(500, 100, 105, 130, "astronaut"));
-	GameObject* enemy = new Enemy(new LoaderParams(-5, 100, 100, 100, "pluto"));
+	GameObject* enemy = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
+	v_random = rand() % 430 + 1;
+	GameObject* enemy1 = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
 	GameObject* SDLgameobject = new SDLGameObject(new LoaderParams(0, 0, 1280, 720, "background"));
 
 	m_gameObjects.push_back(SDLgameobject);
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
+	m_gameObjects.push_back(enemy1);
 
 	std::cout << "entering PlayState\n";
+
+	start = clock();
 
 	return true;
 }

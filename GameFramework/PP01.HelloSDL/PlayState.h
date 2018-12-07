@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "SDLGameObject.h"
+#include <time.h>
 
 class GameObject;
 
@@ -29,4 +30,6 @@ private:
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
 	std::vector<GameObject*> m_gameObjects;
+
+	clock_t start, now;
 };
