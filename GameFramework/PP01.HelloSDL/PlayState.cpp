@@ -55,7 +55,7 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("assets/background.png", "background", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("assets/backgroundscroll.png", "background", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
@@ -67,7 +67,7 @@ bool PlayState::onEnter()
 	GameObject* enemy = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
 	v_random = rand() % 430 + 1;
 	GameObject* enemy1 = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
-	GameObject* SDLgameobject = new SDLGameObject(new LoaderParams(0, 0, 1280, 720, "background"));
+	GameObject* SDLgameobject = new SDLGameObject(new LoaderParams(-5, 0, 1280, 720, "background"));
 
 	m_gameObjects.push_back(SDLgameobject);
 	m_gameObjects.push_back(player);
