@@ -6,6 +6,7 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 #include "SDLGameObject.h"
+#include "Background.h"
 #include <iostream>
 #include <cstdlib>
 
@@ -67,9 +68,9 @@ bool PlayState::onEnter()
 	GameObject* enemy = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
 	v_random = rand() % 430 + 1;
 	GameObject* enemy1 = new Enemy(new LoaderParams(-5, v_random, 100, 100, "pluto"));
-	GameObject* SDLgameobject = new SDLGameObject(new LoaderParams(-5, 0, 1280, 720, "background"));
+	Background* background = new Background(new LoaderParams(-5, 0, 2560, 720, "background"));
 
-	m_gameObjects.push_back(SDLgameobject);
+	m_gameObjects.push_back(background);
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
 	m_gameObjects.push_back(enemy1);

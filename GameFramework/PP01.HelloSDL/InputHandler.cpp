@@ -5,7 +5,6 @@ InputHandler* InputHandler::s_pInstance = NULL;
 
 InputHandler::InputHandler()
 {
-	// 생성자 
 	m_mousePosition = new Vector2D(0, 0);
 
 	for (int i = 0; i < 3; i++)
@@ -16,7 +15,6 @@ InputHandler::InputHandler()
 
 void InputHandler::clean()
 {
-	// 향후 추가 
 }
 
 void InputHandler::update()

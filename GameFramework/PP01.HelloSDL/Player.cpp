@@ -30,4 +30,9 @@ void Player::handleInput()
 	Vector2D* target = TheInputHandler::Instance()->getMousePosition();
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
+
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
+	{
+		m_velocity.setX(2);
+	}
 }
