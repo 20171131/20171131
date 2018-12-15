@@ -1,18 +1,19 @@
 #pragma once
-#include <map>
 #include "SDLGameObject.h"
+#include "Enemy.h"
 
-class Enemy : public SDLGameObject
+class Item : public SDLGameObject
 {
 public:
-	Enemy(const LoaderParams* pParams);
+	Item(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
 
 private:
 	int m_numFrames = 1;
-	const int default_speed;
+	const int default_speed = -8;
 	int current_speed;
 
+	
 };

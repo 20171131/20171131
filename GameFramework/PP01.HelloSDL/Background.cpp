@@ -18,22 +18,10 @@ void Background::update()
 	{
 		m_velocity.setX(-5);
 	}
-	else if (m_position.getX() > 1280)
+	else if (m_position.getX() < -3840)
 	{
-		m_position.setX(-100);
-		m_velocity.setX(-5);
+		m_position.setX(-1280);
 	}
-
-	//if (m_position.getX() > 0)
-	//{
-	//	m_velocity.setX(-5);
-	//}
-	//else if (m_position.getX() < 100)
-	//{
-	//	//m_velocity.setX(-2);
-	//	m_position.setX(-3);
-	//	m_velocity.setX(-5);
-	//}
 
 	SDLGameObject::update();
 }

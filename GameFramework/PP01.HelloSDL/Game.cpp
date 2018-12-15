@@ -24,7 +24,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(MenuState::Instance());
-
 	}
 	else 
 	{
@@ -36,6 +35,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render()
 {
+	SDL_SetRenderDrawColor(m_pRenderer, 12, 37, 68, 255);
 	SDL_RenderClear(m_pRenderer);
 	m_pGameStateMachine->render();
 	SDL_RenderPresent(m_pRenderer);

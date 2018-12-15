@@ -9,7 +9,8 @@ public:
 	virtual void draw() = 0;
 	virtual void update() = 0;
 	virtual void clean() = 0;
-
+	void SetActive(bool value) { active = value; }
+	bool GetActive() { return active; }
 protected:
 	GameObject(const LoaderParams* pParams) {}
 	virtual ~GameObject() {}
@@ -23,5 +24,6 @@ protected:
 	int m_height;
 	int a = 1;
 	int num;
+	bool active;
 };
 

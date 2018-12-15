@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "PlayState.h"
+#include "AnimatedGraphic.h"
 #include <iostream>
 
 const std::string MenuState::s_menuID = "MENU";
@@ -34,13 +35,18 @@ bool MenuState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/title.png", "title", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToPlay);
-	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 400, 100, "exitbutton"), s_exitFromMenu);
+	GameObject* button1 = new MenuButton(new LoaderParams(440, 400, 400, 100, "playbutton"), s_menuToPlay);
+	GameObject* button2 = new MenuButton(new LoaderParams(440, 550, 400, 100, "exitbutton"), s_exitFromMenu);
+	SDLGameObject* title = new AnimatedGraphic(new LoaderParams(390, 100, 500, 200, "title"), 2);
 	
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
-	
+	m_gameObjects.push_back(title);
 	std::cout << "entering MenuState\n";
 	
 	return true;
