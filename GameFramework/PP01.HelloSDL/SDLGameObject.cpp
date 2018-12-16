@@ -27,7 +27,8 @@ void SDLGameObject::draw()
 
 void SDLGameObject::update()
 {
-	if (active) {
+	if (active) 
+	{
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
 	}
@@ -35,5 +36,5 @@ void SDLGameObject::update()
 
 void SDLGameObject::clean()
 {
-
+	m_position.setX(-100);
 }

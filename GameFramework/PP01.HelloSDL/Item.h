@@ -14,6 +14,4 @@ private:
 	int m_numFrames = 1;
 	const int default_speed = -8;
 	int current_speed;
-
-	
 };

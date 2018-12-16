@@ -3,33 +3,57 @@
 
 Projectile::Projectile(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
-	//m_velocity.setY(2);
-	m_velocity.setX(5);
 }
 
 void Projectile::draw()
 {
-	SDLGameObject::draw();
+	if (active)
+	{
+		if (drawbullet)
+		{
+			SDLGameObject::draw();
+		}
+	}
+
 }
 
 void Projectile::update()
 {
-	m_currentFrame = int(((SDL_GetTicks() / 100) % m_numFrames));
-
-	if (m_position.getX() < 0)
+	if (active)
 	{
-		m_velocity.setX(5);
-	}
-	else if (m_position.getX() > 1285)
-	{
-		//m_velocity.setX(-2);
-		m_position.setX(-3);
-	}
+		if (drawbullet)
+		{
+			m_position.setX(m_position.getX() + 5);
 
+			m_currentFrame = int(((SDL_GetTicks() / 100) % 1));
+
+			if (m_position.getX() >= 1285)
+			{
+				drawbullet = false;
+			}
+		}
+	}
+	handleInput();
 	SDLGameObject::update();
 }
 
 void Projectile::clean()
+{
+
+}
+
+void Projectile::shoot(float x, float y)
+{
+	if (drawbullet)
+	{
+		return;
+	}
+	m_position.setX(x);
+	m_position.setY(y + 60);
+	drawbullet = true;
+}
+
+void Projectile::handleInput()
 {
 
 }

@@ -8,8 +8,10 @@ Item::Item(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Item::draw()
 {
-	if(active)
-	SDLGameObject::draw();
+	if (active)
+	{
+		SDLGameObject::draw();
+	}
 }
 
 void Item::update()
@@ -17,8 +19,6 @@ void Item::update()
 	if (active)
 	{
 		m_currentFrame = int(((SDL_GetTicks() / 100) % m_numFrames));
-
-
 
 		if (m_position.getX() < 1290)
 		{

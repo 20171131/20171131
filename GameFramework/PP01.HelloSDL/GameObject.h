@@ -1,6 +1,7 @@
 #pragma once
 #include "LoaderParams.h"
 #include "SDL.h"
+#include "Vector2D.h"
 #include <map>
 
 class GameObject
@@ -11,6 +12,7 @@ public:
 	virtual void clean() = 0;
 	void SetActive(bool value) { active = value; }
 	bool GetActive() { return active; }
+
 protected:
 	GameObject(const LoaderParams* pParams) {}
 	virtual ~GameObject() {}
@@ -25,5 +27,6 @@ protected:
 	int a = 1;
 	int num;
 	bool active;
+
 };
 

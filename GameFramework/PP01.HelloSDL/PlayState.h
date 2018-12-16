@@ -8,19 +8,17 @@
 class GameObject;
 enum Object
 {
-	E_Player = 1,
-	E_Pluto,
-	E_Mars,
-	E_Earth,
-	E_Item
+	PLAYER = 1,
+	EARTH = 2,
+	MARS = 3,
+	PLUTO = 4,
+	ITEM = 5,
+	BULLET = 6
 };
 
 class PlayState : public GameState
 {
 public:
-	//int count;
-	
-
 	virtual void update();
 	virtual void render();
 	virtual bool onEnter();
@@ -41,13 +39,19 @@ public:
 private:
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
+
 	bool spawn_item = false; 
+
 	std::vector<GameObject*> m_gameObjects;
+
 	clock_t start, now;
 	GameObject* player;
 	GameObject* pluto;
 	GameObject* mars;
 	GameObject* earth;
 	GameObject* item;
+	GameObject* bullet;
 
+	class Projectile* c_projectile;
+	class Player* c_player;
 };
